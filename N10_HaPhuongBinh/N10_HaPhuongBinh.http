@@ -1,0 +1,6 @@
+@N10_HaPhuongBinh_HostAddress = http://localhost:5121
+
+GET {{N10_HaPhuongBinh_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
