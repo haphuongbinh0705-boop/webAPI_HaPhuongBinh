@@ -100,8 +100,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
             ),
             const SizedBox(height: 16),
 
-            // MENU ĐIỀU HÀNH CRUD
-            const Text('CHỨC NĂNG QUẢN LÝ (CRUD 4.5đ):', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+            // MENU ĐIỀU HÀNH CRUD CHO ADMIN
+            const Text('CHỨC NĂNG QUẢN TRỊ ADMIN (CRUD 4.5đ):', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.indigo)),
             const SizedBox(height: 8),
 
             // 1. Quản lý nhân viên
