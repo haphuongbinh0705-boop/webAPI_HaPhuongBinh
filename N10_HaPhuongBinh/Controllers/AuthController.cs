@@ -80,35 +80,19 @@ namespace N10_HaPhuongBinh.Controllers
                 return Unauthorized(new { success = false, message = "Tên đăng nhập hoặc mật khẩu không chính xác!" });
             }
 
-            // Sinh mã OTP ngẫu nhiên 6 chữ số
+            // Sinh mã OTP ngẫu nhiên 6 chữ số (Hiệu lực 5 phút)
             var random = new Random();
             var otp = random.Next(100000, 999999).ToString();
             user.OtpCode = otp;
-            user.OtpExpiry = DateTime.Now.AddMinutes(5); // Có hiệu lực trong 5 phút
+            user.OtpExpiry = DateTime.Now.AddMinutes(5);
 
             await _context.SaveChangesAsync();
 
-            // Gửi mã OTP trực tiếp vào hòm thư Gmail thật của người dùng
-            if (!string.IsNullOrEmpty(user.Email) && user.Email.Contains("@"))
-            {
-                _ = Task.Run(async () =>
-                {
-                    try
-                    {
-                        await _emailService.SendOtpEmailAsync(user.Email, user.FullName, otp);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"[EMAIL LỖI] {ex.Message}");
-                    }
-                });
-            }
-
-            // Trả về OTP trong response
+            // Trả về OTP trực tiếp trong response để hiển thị và xác thực tức thì (Không cần gửi Gmail bên ngoài)
             return Ok(new
             {
                 success = true,
-                message = $"Đăng nhập thành công bước 1! Hệ thống đã gửi mã OTP vào Gmail ({user.Email}).",
+                message = "Đăng nhập bước 1 thành công! Vui lòng nhập mã OTP để hoàn tất.",
                 requiresOtp = true,
                 username = user.Username,
                 email = user.Email,

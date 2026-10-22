@@ -124,25 +124,22 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     ),
                     const SizedBox(height: 16),
 
-                    // Thông báo hướng dẫn mở hòm thư Gmail
+                    // Hiển thị mã OTP trực tiếp trên màn hình (Demo nhanh, quay video siêu mượt không cần chờ Gmail)
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       decoration: BoxDecoration(
-                        color: Colors.blue.shade50,
+                        color: Colors.amber.shade50,
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.blue.shade200),
+                        border: Border.all(color: Colors.amber.shade400),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.mark_email_unread_outlined, color: Colors.blue, size: 22),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text(
-                              'Vui lòng mở ứng dụng Gmail để lấy mã OTP 6 số vừa được gửi tới.',
-                              style: TextStyle(fontWeight: FontWeight.w600, color: Colors.blue, fontSize: 13),
-                              textAlign: TextAlign.center,
-                            ),
+                          const Icon(Icons.shield_outlined, color: Colors.brown, size: 22),
+                          const SizedBox(width: 8),
+                          Text(
+                            'Mã OTP của bạn: ${widget.presetOtp}',
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.brown),
                           ),
                         ],
                       ),
