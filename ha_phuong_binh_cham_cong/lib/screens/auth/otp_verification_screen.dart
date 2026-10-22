@@ -28,7 +28,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   void initState() {
     super.initState();
-    _otpController = TextEditingController(); // Để trống để nhập mã OTP thực tế từ Gmail
+    // Tự động điền sẵn mã OTP sinh từ API vào ô nhập giống ban đầu
+    _otpController = TextEditingController(text: widget.presetOtp);
   }
 
   void _handleVerify() async {

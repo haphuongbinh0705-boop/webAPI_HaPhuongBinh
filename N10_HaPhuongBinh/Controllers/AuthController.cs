@@ -88,11 +88,17 @@ namespace N10_HaPhuongBinh.Controllers
 
             await _context.SaveChangesAsync();
 
-            // Trả về OTP trực tiếp trong response để hiển thị và xác thực tức thì (Không cần gửi Gmail bên ngoài)
+            // In mã OTP to rõ ràng ra Console của Visual Studio
+            Console.WriteLine("==========================================================");
+            Console.WriteLine($">>> [CHẤM CÔNG] YÊU CẦU ĐĂNG NHẬP: {user.Username} ({user.FullName})");
+            Console.WriteLine($">>> MÃ OTP XÁC THỰC LÀ: >>> [ {otp} ] <<<");
+            Console.WriteLine("==========================================================");
+
+            // Trả về OTP trực tiếp trong response để app tự động nhận và điền sẵn
             return Ok(new
             {
                 success = true,
-                message = "Đăng nhập bước 1 thành công! Vui lòng nhập mã OTP để hoàn tất.",
+                message = $"Đăng nhập bước 1 thành công! Mã OTP của bạn là: {otp}",
                 requiresOtp = true,
                 username = user.Username,
                 email = user.Email,
