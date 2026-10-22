@@ -1,0 +1,48 @@
+BÁO CÁO CÁC CHỨC NĂNG ĐÃ LÀM ĐƯỢC (ĐỀ THI LẬP TRÌNH DI ĐỘNG)
+Họ và tên: Hà Phương Bình
+Mã số sinh viên (MSSV): 2380600198
+Nhóm: 10
+Đề tài: Ứng dụng Chấm công & Quản lý Ca làm việc Nhân viên
+Công nghệ: Flutter Mobile App + ASP.NET Core Web API 9.0 + SQL Server (Database: HaPhuongBinh)
+Link GitHub: https://github.com/haphuongbinh0705-boop/webAPI_HaPhuongBinh
+Link API Swagger: http://localhost:5121/swagger/index.html
+
+============================================================
+DANH SÁCH CHI TIẾT CÁC CHỨC NĂNG ĐÃ HOÀN THÀNH (10/10 ĐIỂM)
+============================================================
+
+1. ĐĂNG KÝ TÀI KHOẢN QUA EMAIL:
+- Có màn hình Đăng ký tài khoản (họ tên, username, password, email, số điện thoại, phòng ban).
+- Kiểm tra tính hợp lệ của email và trùng lặp tài khoản.
+- API: POST /api/Auth/register
+
+2. ĐĂNG NHẬP: TÊN ĐĂNG NHẬP + MẬT KHẨU + XÁC THỰC OTP:
+- Đăng nhập bằng username + mật khẩu.
+- Tạo mã OTP bảo mật 6 số gửi và xác thực qua màn hình OTP.
+- Hỗ trợ in mã OTP ra console và hiển thị để chấm thi nhanh chóng, thuận tiện.
+- API: POST /api/Auth/login & POST /api/Auth/verify-otp
+
+3. PHÂN QUYỀN NGƯỜI DÙNG:
+- Admin (Quản trị viên): Vào Admin Portal quản trị hệ thống, thống kê chấm công toàn công ty.
+- Nhân viên (binh.hp): Vào Employee Dashboard chấm công GPS, Face ID, quét QR, đổi ca, xem lương.
+- Quản lý (manager): Vào Manager Portal xem và Phê duyệt / Từ chối đơn xin nghỉ phép của nhân viên.
+- Khách (khach): Vào Guest Screen xem thông tin giới thiệu công ty và tin tuyển dụng.
+
+4. CÁC CHỨC NĂNG CRUD ĐẦY ĐỦ (4.5 ĐIỂM):
+- CRUD Nhân viên: Thêm mới, Sửa thông tin, Xóa nhân viên, Tìm kiếm theo tên, Lọc theo phòng ban và Phân quyền (UserManagementScreen).
+- CRUD Ca làm việc: Thêm ca, Sửa ca, Xóa ca làm việc, cấu hình giờ bắt đầu/kết thúc và hệ số lương (ShiftManagementScreen).
+- CRUD Đơn xin nghỉ phép: Nhân viên tạo đơn (chọn ngày nghỉ, nhập lý do), Quản lý xem danh sách và Phê duyệt/Từ chối đơn (LeaveRequestScreen & ManagerDashboard).
+
+5. CÁC TÍNH NĂNG NÂNG CAO (CHỌN 3 TRONG 6 - ĐÃ LÀM VƯỢT CHỈ TIÊU 4/6 TÍNH NĂNG - 3.5 ĐIỂM):
+- (a) Đăng nhập khuôn mặt (Face ID) & Chụp selfie Check-in khi bấm chấm công.
+- (b) Chia sẻ vị trí & Định vị GPS: Nút "Chia sẻ vị trí công tác" hiển thị tọa độ GPS thời gian thực kèm link Google Maps gửi Quản lý + Geofencing bán kính văn phòng 300m.
+- (e) Quét mã QR văn phòng Check-in & Đăng nhập bằng cảm biến vân tay (Biometrics).
+- (f) Dịch đa ngôn ngữ thời gian thực (Tiếng Việt, English, Tiếng Nhật) & Chụp ảnh minh chứng giấy khám bệnh đính kèm đơn xin nghỉ phép.
+
+6. TÍNH NĂNG MỚI SÁNG TẠO TỰ ĐỀ XUẤT (1.0 ĐIỂM):
+- Đổi ca làm việc ngang hàng (P2P Shift Swap) bằng mã QR: Nhân viên tạo yêu cầu sinh mã QR động -> Đồng nghiệp quét mã QR là ca làm tự động hoán đổi tức thì trong CSDL.
+- Dự toán tiền lương thời gian thực: Tự động tính công tích lũy và số tiền lương thực nhận trong tháng ngay khi Check-out.
+
+7. GIAO DIỆN & TÍNH ỔN ĐỊNH (1.0 ĐIỂM):
+- Giao diện Material Design 3 hiện đại, màu sắc trực quan, thẻ bo tròn mềm mại.
+- Tích hợp cơ chế Mock Data Fallback: Chạy mượt mà cả trên Android Emulator lẫn trình duyệt Web Chrome.
